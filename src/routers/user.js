@@ -33,7 +33,7 @@ router.post('/users/login', async (req, res) => {
 
 //this method for https://cron-job.org/
 router.get('/home', async (req, res) => {
-  return res.send('Hello!');
+  return res.send('Hello from server side!');
 });
 
 module.exports = router
