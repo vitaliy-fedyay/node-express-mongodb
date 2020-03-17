@@ -1,5 +1,5 @@
 const express = require('express')
-var cors = require('cors')
+const cors = require('cors')
 const userRouter = require('./routers/user')
 const port = process.env.PORT || 3000
 require('./db/db')
