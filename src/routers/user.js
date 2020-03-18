@@ -34,16 +34,16 @@ router.post('/users/login', async (req, res) => {
 router.post('/users/admin-auth', async (req, res) => {
   //Checking admin succes
   try {
-    const { nickname, password } = req.body
-    if (nickname !== 'admin' && password !== 'admin') {
-      return res.status(401).send({ error: 'Login failed!' })
+    const { email, password } = req.body
+    const user = await User.findByCredentials(email, password)
+    if (!user) {
+      return res.status(401).send({ error: 'Login failed! Check authentication credentials' })
     }
     const token = await user.generateAuthToken()
     res.send({ token })
   } catch (error) {
     res.status(400).send(error)
   }
-
 })
 
 //this method for https://cron-job.org/
