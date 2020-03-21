@@ -15,6 +15,12 @@ const postSchema = mongoose.Schema({
   }
 })
 
+postSchema.pre('save', async function (next) {
+  // Hash the password before saving the user model
+  const post = this
+  next()
+})
+
 
 const Post = mongoose.model('Post', postSchema)
 
