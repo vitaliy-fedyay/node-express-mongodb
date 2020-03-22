@@ -1,17 +1,7 @@
 const express = require('express')
 const User = require('../models/User')
-const Post = require('../models/Post')
 const router = express.Router()
 
-router.post('/create', async (req, res) => {
-  // Create a new post
-  try {
-    const post = new Post(req.body)
-    res.status(201).send('New post create!')
-  } catch (error) {
-    res.status(400).send(error)
-  }
-})
 
 router.post('/register', async (req, res) => {
   // Create a new user

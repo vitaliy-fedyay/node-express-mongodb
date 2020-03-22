@@ -2,25 +2,27 @@ const mongoose = require('mongoose')
 
 const postSchema = mongoose.Schema({
   title: {
-    type: String
+    type: String,
+    required: true
   },
   content: {
-    type: String
+    type: String,
+    required: true
   },
   author: {
-    type: String
+    type: String,
+    required: true
   },
   date: {
-    type: Date
+    type: String,
+    required: true
   }
 })
 
 postSchema.pre('save', async function (next) {
-  // Hash the password before saving the user model
-  const post = this
+  //Save a new post
   next()
 })
-
 
 const Post = mongoose.model('Post', postSchema)
 
