@@ -13,4 +13,15 @@ router.post('/create', async (req, res) => {
   }
 })
 
+router.get('/admin-posts', async (req, res) => {
+  //get All posts
+  try {
+    const posts = await Post.find()
+    res.status(200).send(posts)
+  }
+  catch (error) {
+    res.status(400).send(error)
+  }
+})
+
 module.exports = router
