@@ -36,7 +36,7 @@ router.post('/admin-post', async (req, res) => {
   }
 })
 
-router.delete('/admin-post-delete', async (req, res) => {
+router.post('/admin-post-delete', async (req, res) => {
   //delete post
   try {
     const { _id } = req.body
