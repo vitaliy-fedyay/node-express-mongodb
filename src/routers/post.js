@@ -24,4 +24,28 @@ router.get('/admin-posts', async (req, res) => {
   }
 })
 
+router.post('/admin-post', async (req, res) => {
+  //get post
+  try {
+    const { title } = req.body
+    const post = await Post.findOne(title)
+    res.status(200).send(post)
+  }
+  catch (error) {
+    res.status(400).send(error)
+  }
+})
+
+router.delete('/admin-post-delete', async (req, res) => {
+  //get post
+  try {
+    const { _id } = req.body
+    const post = await Post.findByIdAndRemove(_id)
+    res.status(200).send(post)
+  }
+  catch (error) {
+    res.status(400).send(error)
+  }
+})
+
 module.exports = router
