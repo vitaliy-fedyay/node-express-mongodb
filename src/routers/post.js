@@ -48,4 +48,15 @@ router.delete('/admin-post-delete', async (req, res) => {
   }
 })
 
+router.post('/admin-post-update', async (req, res) => {
+  //update post
+  const { _id, title, content, author } = req.body
+  await Post.findByIdAndUpdate({ _id }, { title, content, author }, { new: true })
+    .then(post => {
+      res.status(200).send(post)
+    })
+    .catch(error => res.status(400).send(error)
+    )
+})
+
 module.exports = router
