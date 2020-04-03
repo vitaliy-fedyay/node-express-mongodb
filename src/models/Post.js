@@ -20,7 +20,7 @@ const postSchema = mongoose.Schema({
 })
 
 postSchema.pre('save', async function (next) {
-  //Save a new post
+  //change and save a new post 
   next()
 })
 

@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 const router = express.Router()
 
 router.post('/create', async (req, res) => {
-  // Create a new post
+  //create a new post
   try {
     const post = new Post(req.body)
     await post.save()
@@ -14,7 +14,7 @@ router.post('/create', async (req, res) => {
 })
 
 router.get('/admin-posts', async (req, res) => {
-  //get All posts
+  //get all posts
   try {
     const posts = await Post.find()
     res.status(200).send(posts)

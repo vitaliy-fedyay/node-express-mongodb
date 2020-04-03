@@ -4,7 +4,7 @@ const router = express.Router()
 
 
 router.post('/register', async (req, res) => {
-  // Create a new user
+  // create a new user
   try {
     const user = new User(req.body)
     await user.save()
@@ -16,7 +16,7 @@ router.post('/register', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-  //Login a registered user
+  //login a registered user
   try {
     const { email, password } = req.body
     const user = await User.findByCredentials(email, password)
@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
 })
 
 router.post('/admin-auth', async (req, res) => {
-  //Checking admin succes
+  //Checking admin success
   try {
     const { email, password } = req.body
     const user = await User.findByCredentials(email, password)
