@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const adminSchema = mongoose.Schema({
@@ -26,14 +25,10 @@ adminSchema.methods.generateAuthToken = async function () {
   return token
 }
 
-adminSchema.statics.findInCollection = async (email, password) => {
+adminSchema.statics.findInCollection = async (login, password) => {
   // search by login
   const admin = await Admin.findOne({ login })
   if (!admin) {
-    throw new Error({ error: 'Invalid login' })
-  }
-  const isPasswordMatch = await bcrypt.compare(password, admin.password)
-  if (!isPasswordMatch) {
     throw new Error({ error: 'Invalid login' })
   }
   return admin
