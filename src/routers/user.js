@@ -20,7 +20,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body
     const user = await User.findByCredentials(email, password)
     if (!user) {
-      return res.status(401).send({ error: 'Login failed! Check authentication credentials' })
+      return res.status(401).send({ error: 'Login failed!' })
     }
     const token = await user.generateAuthToken()
     res.send({ token })
@@ -28,9 +28,5 @@ router.post('/login', async (req, res) => {
     res.status(400).send(error)
   }
 })
-
-router.get('/home', async (req, res) => {
-  return res.send('Hello from server side!');
-});
 
 module.exports = router
